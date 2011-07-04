@@ -52,7 +52,7 @@ namespace Mono.CSharp
 			GetCompletions
 		}
 
-		static object evaluator_lock = new object ();
+		//static object evaluator_lock = new object ();
 		static volatile bool invoking;
 		
 		static int count;
@@ -191,7 +191,7 @@ namespace Mono.CSharp
 				return null;
 			}
 
-			lock (evaluator_lock){
+			//lock (evaluator_lock){
 				if (!inited)
 					Init ();
 				else
@@ -211,7 +211,7 @@ namespace Mono.CSharp
 				Class parser_result = parser.InteractiveResult;
 				compiled = CompileBlock (parser_result, parser.undo, ctx.Report);
 				return null;
-			}
+			//}
 		}
 
 		/// <summary>
@@ -317,7 +317,7 @@ namespace Mono.CSharp
 			if (input == null || input.Length == 0)
 				return null;
 			
-			lock (evaluator_lock){
+			//lock (evaluator_lock){
 				if (!inited)
 					Init ();
 				
@@ -352,7 +352,7 @@ namespace Mono.CSharp
 					prefix = cr.BaseText;
 					return cr.Result;
 				} 
-			}
+			//}
 			return null;
 		}
 
@@ -752,14 +752,14 @@ namespace Mono.CSharp
 		
 		internal string [] GetVarNames ()
 		{
-			lock (evaluator_lock){
+			//lock (evaluator_lock){
 				return new List<string> (fields.Keys).ToArray ();
-			}
+			//}
 		}
 		
 		public string GetVars ()
 		{
-			lock (evaluator_lock){
+			//lock (evaluator_lock){
 				StringBuilder sb = new StringBuilder ();
 				
 				foreach (var de in fields){
@@ -778,7 +778,7 @@ namespace Mono.CSharp
 				}
 				
 				return sb.ToString ();
-			}
+			//}
 		}
 
 		/// <summary>
@@ -791,9 +791,9 @@ namespace Mono.CSharp
 			if (assembly == null)
 				return;
 
-			lock (evaluator_lock){
+			//lock (evaluator_lock){
 				importer.ImportAssembly (assembly, module.GlobalRootNamespace);
-			}
+			//}
 		}
 
 		/// <summary>
@@ -801,9 +801,9 @@ namespace Mono.CSharp
 		/// </summary>
 		public void ReferenceAssembly (Assembly a)
 		{
-			lock (evaluator_lock){
+			//lock (evaluator_lock){
 				importer.ImportAssembly (a, module.GlobalRootNamespace);
-			}
+			//}
 		}
 	}
 
