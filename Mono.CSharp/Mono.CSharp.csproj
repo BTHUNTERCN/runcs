@@ -67,65 +67,173 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="anonymous.cs" />
-    <Compile Include="argument.cs" />
-    <Compile Include="assembly.cs" />
+    <Compile Include="anonymous.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="argument.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="assembly.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Assembly\AssemblyInfo.cs" />
-    <Compile Include="assign.cs" />
-    <Compile Include="attribute.cs" />
-    <Compile Include="cfold.cs" />
-    <Compile Include="class.cs" />
-    <Compile Include="codegen.cs" />
-    <Compile Include="complete.cs" />
-    <Compile Include="const.cs" />
-    <Compile Include="constant.cs" />
-    <Compile Include="context.cs" />
-    <Compile Include="convert.cs" />
-    <Compile Include="cs-tokenizer.cs" />
-    <Compile Include="decl.cs" />
-    <Compile Include="delegate.cs" />
+    <Compile Include="assign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="attribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cfold.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="class.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="codegen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="complete.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="const.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="constant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="context.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="convert.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cs-parser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cs-tokenizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="decl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="delegate.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="doc-bootstrap.cs" />
-    <Compile Include="driver.cs" />
-    <Compile Include="dynamic.cs" />
-    <Compile Include="ecore.cs" />
-    <Compile Include="enum.cs" />
-    <Compile Include="eval.cs" />
-    <Compile Include="expression.cs" />
-    <Compile Include="field.cs" />
-    <Compile Include="flowanalysis.cs" />
-    <Compile Include="generic.cs" />
-    <Compile Include="import.cs" />
-    <Compile Include="iterators.cs" />
-    <Compile Include="lambda.cs" />
-    <Compile Include="linq.cs" />
-    <Compile Include="literal.cs" />
-    <Compile Include="location.cs" />
-    <Compile Include="membercache.cs" />
-    <Compile Include="method.cs" />
-    <Compile Include="modifiers.cs" />
-    <Compile Include="MonoSymbolFile.cs" />
-    <Compile Include="MonoSymbolTable.cs" />
-    <Compile Include="MonoSymbolWriter.cs" />
-    <Compile Include="namespace.cs" />
-    <Compile Include="nullable.cs" />
-    <Compile Include="outline.cs" />
-    <Compile Include="parameter.cs" />
-    <Compile Include="pending.cs" />
-    <Compile Include="property.cs" />
-    <Compile Include="reflection.cs" />
-    <Compile Include="report.cs" />
-    <Compile Include="rootcontext.cs" />
-    <Compile Include="roottypes.cs" />
+    <Compile Include="driver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dynamic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ecore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="eval.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="expression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="field.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flowanalysis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="import.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="iterators.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lambda.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="linq.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="literal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="location.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="membercache.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="method.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="modifiers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonoSymbolFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonoSymbolTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MonoSymbolWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="namespace.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="nullable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="outline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="parameter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pending.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="property.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="reflection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="report.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="rootcontext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="roottypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Shims.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="statement.cs" />
-    <Compile Include="support.cs" />
-    <Compile Include="symbolwriter.cs" />
-    <Compile Include="typemanager.cs" />
-    <Compile Include="typespec.cs" />
-    <Compile Include="visit.cs" />
-    <Compile Include="cs-parser.cs" />
+    <Compile Include="statement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="symbolwriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="typemanager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="typespec.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="visit.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
