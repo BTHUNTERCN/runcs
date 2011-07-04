@@ -153,9 +153,9 @@ namespace Mono.CSharp
 		{
 			if (!inited || !invoking)
 				return;
-			
-			if (invoke_thread != null)
-				invoke_thread.Abort ();
+
+            if (invoke_thread != null)
+                invoke_thread.Abort();
 		}
 
 		/// <summary>
@@ -192,7 +192,7 @@ namespace Mono.CSharp
 			}
 
 			lock (evaluator_lock){
-				if (!inited)
+                if (!inited)
 					Init ();
 				else
 					ctx.Report.Printer.Reset ();
@@ -316,44 +316,64 @@ namespace Mono.CSharp
 			prefix = "";
 			if (input == null || input.Length == 0)
 				return null;
-			
-			lock (evaluator_lock){
-				if (!inited)
-					Init ();
-				
-				bool partial_input;
-				CSharpParser parser = ParseString (ParseMode.GetCompletions, input, out partial_input);
-				if (parser == null){
-					if (CSharpParser.yacc_verbose_flag != 0)
-						Console.WriteLine ("DEBUG: No completions available");
-					return null;
-				}
-				
-				Class parser_result = parser.InteractiveResult;
+
+            try
+            {
+                invoke_thread = System.Threading.Thread.CurrentThread;
+                invoking = true;
+
+                lock (evaluator_lock)
+                {
+                    if (!inited)
+                        Init();
+
+                    bool partial_input;
+                    CSharpParser parser = ParseString(ParseMode.GetCompletions, input, out partial_input);
+                    if (parser == null)
+                    {
+                        if (CSharpParser.yacc_verbose_flag != 0)
+                            Console.WriteLine("DEBUG: No completions available");
+                        return null;
+                    }
+
+                    Class parser_result = parser.InteractiveResult;
 
 #if NET_4_0
 				var access = AssemblyBuilderAccess.Run;
 #else
-				var access = AssemblyBuilderAccess.Run;
+                    var access = AssemblyBuilderAccess.Run;
 #endif
-				var a = new AssemblyDefinitionDynamic (module, "completions");
-				a.Create (AppDomain.CurrentDomain, access);
-				module.SetDeclaringAssembly (a);
+                    var a = new AssemblyDefinitionDynamic(module, "completions");
+                    a.Create(AppDomain.CurrentDomain, access);
+                    module.SetDeclaringAssembly(a);
 
-				// Need to setup MemberCache
-				parser_result.CreateType ();
+                    // Need to setup MemberCache
+                    parser_result.CreateType();
 
-				var method = parser_result.Methods[0] as Method;
-				BlockContext bc = new BlockContext (method, method.Block, TypeManager.void_type);
+                    var method = parser_result.Methods[0] as Method;
+                    BlockContext bc = new BlockContext(method, method.Block, TypeManager.void_type);
 
-				try {
-					method.Block.Resolve (null, bc, method);
-				} catch (CompletionResult cr) {
-					prefix = cr.BaseText;
-					return cr.Result;
-				} 
-			}
-			return null;
+                    try
+                    {
+                        method.Block.Resolve(null, bc, method);
+                    }
+                    catch (CompletionResult cr)
+                    {
+                        prefix = cr.BaseText;
+                        return cr.Result;
+                    }
+                }
+            }
+            catch (ThreadAbortException e)
+            {
+                Console.WriteLine("Interrupted!\n{0}", e);
+            }
+            finally
+            {
+                invoking = false;
+            }
+
+            return null;
 		}
 
 		/// <summary>
